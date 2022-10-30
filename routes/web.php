@@ -15,6 +15,10 @@ use Inertia\Inertia;
 |
 */
 
+Route::post('profile', function(){
+
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -27,5 +31,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/profile', function () {
+    return Inertia::render('Profile');
+})->middleware(['auth', 'verified'])->name('profile');
 
 require __DIR__.'/auth.php';

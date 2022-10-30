@@ -10,6 +10,9 @@ const form = useForm({
     name: '',
     email: '',
     password: '',
+    unifei_registration: '',
+    phone_number: '',
+    birthday: '',
     password_confirmation: '',
     terms: false,
 });
@@ -27,9 +30,27 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Nome" />
                 <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
                 <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
+              <div class="mt-4">
+                <InputLabel for="unifei_registration" value="Matrícula Unifei" />
+                <TextInput id="unifei_registration" type="text" class="mt-1 block w-full" v-model="form.unifei_registration" required autofocus autocomplete="unifei_registration" />
+                <InputError class="mt-2" :message="form.errors.unifei_registration" />
+            </div>
+
+             <div class="mt-4">
+                <InputLabel for="phone_number" value="Telefone" />
+                <TextInput id="phone_number" type="text" class="mt-1 block w-full" v-model="form.phone_number" required autofocus autocomplete="phone_number" />
+                <InputError class="mt-2" :message="form.errors.phone_number" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="birthday" value="Data de Aniversário" />
+                <TextInput id="birthday" type="date" class="mt-1 block w-full" v-model="form.birthday" required autofocus autocomplete="birthday" />
+                <InputError class="mt-2" :message="form.errors.birthday" />
             </div>
 
             <div class="mt-4">
@@ -39,13 +60,13 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Senha" />
                 <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                <InputLabel for="password_confirmation" value="Confirme Senha" />
                 <TextInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>

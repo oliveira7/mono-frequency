@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Participant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -27,7 +28,7 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -40,9 +41,17 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $participant = Participant::create([
+            'birthday' => $request->birthday,
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'userable_id' => $participant->id,
+            'userable_type' => 'App\Models\Participant',
+            'unifei_registration' => $request->unifei_registration,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
