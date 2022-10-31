@@ -16,4 +16,9 @@ class Location extends Model
         'location',
         'description',
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }

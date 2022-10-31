@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('participants_activities', function (Blueprint $table) {
-            //
+        Schema::create('activity_participant', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('activity_id')->constrained();
+            $table->foreignId('participant_id')->constrained();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('participants_activities', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('activity_participant');
     }
 };

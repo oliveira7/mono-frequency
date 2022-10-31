@@ -24,4 +24,14 @@ class Teacher extends Model
     {
         return $this->morphOne(User::class, 'userable');
     }
+
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class);
+    }
+
+    public function frequencies()
+    {
+        return $this->hasMany(Frequency::class);
+    }
 }

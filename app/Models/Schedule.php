@@ -15,4 +15,15 @@ class Schedule extends Model
         'time',
         'day_of_the_week'
     ];
+
+    public function frequencies()
+    {
+        return $this->hasMany(Frequency::class);
+    }
+
+    public function activity()
+    {
+        return $this->hasOne(Activity::class);
+    }
+
 }
